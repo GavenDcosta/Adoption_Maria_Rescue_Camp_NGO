@@ -1,0 +1,96 @@
+@import "../../responsive.scss";
+
+.profilePage {
+  display: flex;
+  height: 100%;
+
+  @include md{
+    flex-direction: column;
+    overflow: scroll;
+  }
+
+  .details {
+    flex: 3;
+    overflow-y: scroll;
+    padding-bottom: 50px;
+
+    @include md{
+      flex:none;
+      height: max-content;
+    }
+
+    .wrapper{
+      padding-right: 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .section1{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin:0;
+        
+        
+        img{
+            height: 370px;
+            width: 300px;
+        }
+
+        .info{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            h1{
+                text-align: center;
+            }
+
+            p{
+                text-align: justify;
+            }
+
+            @media (min-width: 766px) {
+              width: 50%;
+            }
+        }
+
+
+      }
+
+      .section2{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 30px;
+        margin-top: 40px;
+
+        @media (max-width: 516px) {
+          justify-content: center;
+          align-items: center;
+        }
+      }
+
+     
+
+     
+    }
+  }
+  .chatContainer {
+    flex: 2;
+    background-color: #fcf5f3;
+    height: 100%;
+
+    @include md{
+      flex:none;
+      height: max-content;
+    }
+
+    .wrapper{
+      padding: 0px 20px;
+      height: 100%;
+    }
+  }
+}
