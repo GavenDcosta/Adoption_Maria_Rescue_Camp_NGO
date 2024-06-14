@@ -10,9 +10,16 @@ import Donation from "../../components/donation/Donation";
 
 function SinglePage() {
   const post = useLoaderData();
+
   const [saved, setSaved] = useState(post.isSaved);
+  const [booked, setBooked] = useState(post.isBooked);
+  const [status, setStatus] = useState(post.status);
+
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  console.log(post)
+
 
   const handleSave = async () => {
     if (!currentUser) {
@@ -28,6 +35,41 @@ function SinglePage() {
     }
   };
 
+
+  const handleBook = async () => {
+    if (!currentUser) {
+      navigate("/login");
+      return;
+    }
+
+    if (status === "booking" && !booked) {
+      alert("Someone has already booked this, contact us if any queries");
+      return;
+    }
+
+    const message = booked
+      ? "Are you sure you want to remove this post from your booked list?"
+      : "Are you sure you want to book this post?";
+
+    const confirmed = window.confirm(message);
+
+    if (!confirmed) {
+      return;
+    }
+
+    setBooked((prev) => !prev);
+    setStatus((prev) => (prev === 'booking' ? 'not_adopted' : 'booking'));
+
+    try {
+      await apiRequest.post("/users/book", { postId: post.id });
+    } catch (err) {
+      console.log(err);
+      setBooked((prev) => !prev);
+      setStatus((prev) => (prev === 'booking' ? 'not_adopted' : 'booking'));
+    }
+  };
+
+
   return (
     <div className="singlePage">
       <div className="details">
@@ -42,6 +84,19 @@ function SinglePage() {
                   <span>{post.address}</span>
                 </div>
                 <div className="price">$ {post.price}</div>
+
+
+                <button
+                  onClick={handleBook} 
+                  style={{
+                    backgroundColor: booked ? "yellow" : "white",
+                  }}
+                >
+                  <img src="/save.png" alt="" />
+                  {booked ? "On Booking, Contact us" : "Book for Adoption"}
+                </button>
+
+
               </div>
               <div className="user">
                 <img src={post.user.avatar} alt="" />
@@ -129,7 +184,7 @@ function SinglePage() {
               <img src="/status.jpg" alt="" />
               <div className="featureText">
                 <span>Status</span>
-                <p>{post.status}</p>
+                <p>{status}</p>
               </div>
             </div>
             {/* <div className="feature">

@@ -77,6 +77,21 @@ const ProfilePage = () => {
                     </Await>
                 
                  </Suspense>
+
+                 <div className="title">
+                    <h1>Booked List</h1>
+                 </div>
+                 <Suspense fallback={<p>Loading...</p>}>
+                    <Await
+                      resolve={data.postResponse}
+                      errorElement={
+                        <p>Error loading Posts!</p>
+                      }
+                    >
+                      {(postResponse) =>  <List isProfilePage posts={postResponse.data.bookedPosts} />}
+                    </Await>
+                
+                 </Suspense>
                  
                  {currentUser.username === "gaven" && currentUser.email === "gavendcosta@gmail.com" && (
                       <>

@@ -76,6 +76,7 @@ export const getPost = async (req, res) => {
 
     const token = req.cookies?.token;
     let isSaved = false;
+    let isBooked = false
 
     if (token) {
       try {
@@ -94,7 +95,24 @@ export const getPost = async (req, res) => {
       }
     }
 
-    res.status(200).json({ ...post, isSaved });
+    if (token) {
+      try {
+        const payload = jwt.verify(token, process.env.JWT_SECRET_KEY);
+        const booked = await prisma.bookedPosts.findUnique({
+          where: {
+            userId_postId: {
+              postId: id,
+              userId: payload.id,
+            },
+          },
+        });
+        isBooked = !!booked;
+      } catch (err) {
+        console.log('Token verification failed:', err);
+      }
+    }
+
+    res.status(200).json({ ...post, isSaved, isBooked });
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Failed to get post" });
