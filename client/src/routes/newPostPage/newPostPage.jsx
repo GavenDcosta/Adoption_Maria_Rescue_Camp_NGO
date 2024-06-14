@@ -25,27 +25,22 @@ function NewPostPage() {
     try{
         const res = await apiRequest.post("/posts", {
           postData: {
-            title: inputs.title,
+            name: inputs.name,
+            gender: inputs.gender,
             price: parseInt(inputs.price),
             address: inputs.address,
             city: inputs.city,
-            bedroom: parseInt(inputs.bedroom),
-            bathroom: parseInt(inputs.bathroom),
-            type: inputs.type,
-            property: inputs.property,
-            latitude: inputs.latitude,
-            longitude: inputs.longitude,
+            age: parseInt(inputs.age),
+            status: inputs.status,
             images: images,
           },
           postDetail: {
             description: value,
-            utilities: inputs.utilities,
-            pet: inputs.pet,
+            species: inputs.species,
+            breed: inputs.breed,
+            temperament: inputs.temperament,
+            vaccinationStatus: inputs.vaccination,
             income: inputs.income,
-            size: parseInt(inputs.size),
-            school: parseInt(inputs.school),
-            bus: parseInt(inputs.bus),
-            restaurent: parseInt(inputs.restaurant),
           },
         })
 
@@ -66,8 +61,16 @@ function NewPostPage() {
         <div className="wrapper">
           <form onSubmit={handleSubmit}>
             <div className="item">
-              <label htmlFor="title">Title</label>
-              <input id="title" name="title" type="text" />
+              <label htmlFor="name">Name</label>
+              <input id="name" name="name" type="text" />
+            </div>
+            <div className="item">
+              <label htmlFor="gender">Gender</label>
+              <select name="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
             </div>
             <div className="item">
               <label htmlFor="price">Price in Dollars</label>
@@ -86,54 +89,51 @@ function NewPostPage() {
               <input id="city" name="city" type="text" />
             </div>
             <div className="item">
-              <label htmlFor="bedroom">Bedroom Number</label>
-              <input min={1} id="bedroom" name="bedroom" type="number" />
+              <label htmlFor="age">Age(optional)</label>
+              <input min={0} id="age" name="age" type="number" />
             </div>
             <div className="item">
-              <label htmlFor="bathroom">Bathroom Number</label>
-              <input min={1} id="bathroom" name="bathroom" type="number" />
+              <label htmlFor="species">Species(dog,cat,etc)</label>
+              <input id="species" name="species" type="text" />
             </div>
             <div className="item">
-              <label htmlFor="latitude">Latitude</label>
-              <input id="latitude" name="latitude" type="text" />
+              <label htmlFor="breed">Breed(optional)</label>
+              <input id="breed" name="breed" type="text" />
             </div>
+
             <div className="item">
-              <label htmlFor="longitude">Longitude</label>
-              <input id="longitude" name="longitude" type="text" />
-            </div>
-            <div className="item">
-              <label htmlFor="type">Type</label>
-              <select name="type">
-                <option value="rent" defaultChecked>
-                  Rent
+              <label htmlFor="temperament">Temperament</label>
+              <select name="temperament">
+                <option value="friendly" defaultChecked>
+                  Friendly
                 </option>
-                <option value="buy">Buy</option>
+                <option value="shy">
+                  Shy
+                </option>
+                <option value="energetic">
+                  Energetic
+                </option>
               </select>
             </div>
+
             <div className="item">
-              <label htmlFor="type">Property</label>
-              <select name="property">
-                <option value="apartment">Apartment</option>
-                <option value="house">House</option>
-                <option value="condo">Condo</option>
-                <option value="land">Land</option>
+              <label htmlFor="vaccination">Vaccination Status</label>
+              <select name="vaccination">
+                <option value="vaccianted">Vaccinated</option>
+                <option value="not_vaccianted">Not Vaccinated</option>
               </select>
             </div>
+
+
             <div className="item">
-              <label htmlFor="utilities">Utilities Policy</label>
-              <select name="utilities">
-                <option value="owner">Owner is responsible</option>
-                <option value="tenant">Tenant is responsible</option>
-                <option value="shared">Shared</option>
+              <label htmlFor="status">Adoption Status</label>
+              <select name="status">
+                <option value="not_adopted">Not Adopted</option>
+                <option value="adopted">Adopted</option>
+                <option value="booking">booking</option>
               </select>
             </div>
-            <div className="item">
-              <label htmlFor="pet">Pet Policy</label>
-              <select name="pet">
-                <option value="allowed">Allowed</option>
-                <option value="not-allowed">Not Allowed</option>
-              </select>
-            </div>
+
             <div className="item">
               <label htmlFor="income">Income Policy</label>
               <input
@@ -143,22 +143,7 @@ function NewPostPage() {
                 placeholder="Income Policy"
               />
             </div>
-            <div className="item">
-              <label htmlFor="size">Total Size (sqft)</label>
-              <input min={0} id="size" name="size" type="number" />
-            </div>
-            <div className="item">
-              <label htmlFor="school">School</label>
-              <input min={0} id="school" name="school" type="number" />
-            </div>
-            <div className="item">
-              <label htmlFor="bus">bus</label>
-              <input min={0} id="bus" name="bus" type="number" />
-            </div>
-            <div className="item">
-              <label htmlFor="restaurant">Restaurant</label>
-              <input min={0} id="restaurant" name="restaurant" type="number" />
-            </div>
+
             <button disabled={isLoading} className="sendButton">Add</button>
             {error && <span>{error}</span>}
           </form>

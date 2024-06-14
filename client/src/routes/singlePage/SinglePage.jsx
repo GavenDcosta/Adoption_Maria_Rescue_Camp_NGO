@@ -36,7 +36,7 @@ function SinglePage() {
           <div className="info">
             <div className="top">
               <div className="post">
-                <h1>{post.title}</h1>
+                <h1>{post.name}</h1>
                 <div className="address">
                   <img src="/pin.png" alt="" />
                   <span>{post.address}</span>
@@ -62,24 +62,24 @@ function SinglePage() {
           <p className="title">General</p>
           <div className="listVertical">
             <div className="feature">
-              <img src="/utility.png" alt="" />
+              <img src="/vaccination.png" alt="" />
               <div className="featureText">
-                <span>Utilities</span>
-                {post.postDetail.utilities === "owner" ? (
-                  <p>Owner is responsible</p>
+                <span>Vaccination Status</span>
+                {post.postDetail.vaccinationStatus === "vaccianted" ? (
+                  <p>Vaccination is done</p>
                 ) : (
-                  <p>Tenant is responsible</p>
+                  <p>Not Vaccianted Yet</p>
                 )}
               </div>
             </div>
             <div className="feature">
-              <img src="/pet.png" alt="" />
+              <img src="/species.jpg" alt="" />
               <div className="featureText">
-                <span>Pet Policy</span>
-                {post.postDetail.pet === "allowed" ? (
-                  <p>Pets Allowed</p>
+                <span>Species</span>
+                {post.postDetail.species? (
+                  <p>{post.postDetail.species}</p>
                 ) : (
-                  <p>Pets not Allowed</p>
+                  <p>NA</p>
                 )}
               </div>
             </div>
@@ -91,53 +91,58 @@ function SinglePage() {
               </div>
             </div>
           </div>
-          <p className="title">Sizes</p>
+          <p className="title">About</p>
           <div className="sizes">
             <div className="size">
-              <img src="/size.png" alt="" />
-              <span>{post.postDetail.size} sqft</span>
+              <img src="/breed.png" alt="" />
+              {post.postDetail.breed? (
+                <p>Breed: {post.postDetail.breed}</p>
+              ) : (
+                <p>Breed: NA</p>
+              )}
             </div>
             <div className="size">
-              <img src="/bed.png" alt="" />
-              <span>{post.bedroom} beds</span>
+              <img src="/age.png" alt="" />
+              {
+                post.age? (<span>{post.age}</span>): (<span>NA</span>)
+              }
             </div>
             <div className="size">
-              <img src="/bath.png" alt="" />
-              <span>{post.bathroom} bathroom</span>
+              <img src="/gender.png" alt="" />
+              <span>{post.gender}</span>
             </div>
           </div>
-          <p className="title">Nearby Places</p>
+
+          
+          <p className="title">Additional Details</p>
           <div className="listHorizontal">
             <div className="feature">
-              <img src="/school.png" alt="" />
+              <img src="/pet.png" alt="" />
               <div className="featureText">
-                <span>School</span>
+                <span>Temperament</span>
                 <p>
-                  {post.postDetail.school > 999
-                    ? post.postDetail.school / 1000 + "km"
-                    : post.postDetail.school + "m"}{" "}
-                  away
+                  {post.postDetail.temperament}
                 </p>
               </div>
             </div>
             <div className="feature">
-              <img src="/pet.png" alt="" />
+              <img src="/status.jpg" alt="" />
               <div className="featureText">
-                <span>Bus Stop</span>
-                <p>{post.postDetail.bus}m away</p>
+                <span>Status</span>
+                <p>{post.status}</p>
               </div>
             </div>
-            <div className="feature">
+            {/* <div className="feature">
               <img src="/fee.png" alt="" />
               <div className="featureText">
                 <span>Restaurant</span>
                 <p>{post.postDetail.restaurent}m away</p>
               </div>
-            </div>
+            </div> */}
           </div>
           
           <div className="buttons">
-            <Link target='_blank' to="https://wa.me/919768333418">
+            <Link target='_blank' to="https://www.instagram.com/direct/t/17845898502157209/">
                 <button>
                   <img src="/chat.png" alt="" />
                   Send a Message
@@ -151,7 +156,7 @@ function SinglePage() {
               }}
             >
               <img src="/save.png" alt="" />
-              {saved ? "Place Saved" : "Save the Place"}
+              {saved ? "Post Saved" : "Save the Post"}
             </button>
           </div>
 

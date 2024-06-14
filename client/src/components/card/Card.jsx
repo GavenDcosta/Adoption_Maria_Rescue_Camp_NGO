@@ -52,7 +52,7 @@ const Card = ({item, isProfile}) => {
       </Link>
       <div className="textContainer">
         <h2 className='title'>
-          <Link  to={`/${item.id}`} >{item.title}</Link>
+          <Link  to={`/${item.id}`} >{item.name}</Link>
         </h2>
         <p className='address'>
           <img src="/pin.png" alt="" />
@@ -62,12 +62,12 @@ const Card = ({item, isProfile}) => {
         <div className="bottom">
           <div className="features">
              <div className="feature">
-               <img src="/bed.png" alt="" />
-               <span>{item.bedroom} bedroom</span>
+               <img src="/clock.png" alt="" />
+               <span>Age: {item.age}</span>
              </div>
              <div className="feature">
-               <img src="/bath.png" alt="" />
-               <span>{item.bathroom} bathroom</span>
+               <img src="/gender.png" alt="" />
+               <span>Gender: {item.gender}</span>
              </div>
           </div>
           <div className="icons">
@@ -91,7 +91,7 @@ const Card = ({item, isProfile}) => {
                       </>
                )}
 
-              <Link target='_blank' to="https://wa.me/919768333418">
+              <Link target='_blank' to="https://www.instagram.com/direct/t/17845898502157209/">
                   <div className="icon">
                       <img src="/chat.png" alt="" />
                   </div>
