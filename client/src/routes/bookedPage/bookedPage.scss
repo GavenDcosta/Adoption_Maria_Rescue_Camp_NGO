@@ -1,0 +1,27 @@
+@import "../../responsive.scss";
+
+.bookedPage{
+    display: flex;
+    height: 100vh;
+    overflow-y: scroll;
+
+    .wrapper{
+        display: flex;
+
+        .cards{
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+            flex-wrap: wrap;
+
+            @include md{
+                justify-content: center;
+            }
+        }
+
+        @include md{
+            justify-content: center;
+        }
+    }
+   
+}

@@ -18,6 +18,7 @@ function Navbar() {
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
         <Link to="/list">Adopt Pets</Link>
+        <Link to="/booked">Booked Pets</Link>
       </div>
       <div className="right">
         {currentUser ? (
@@ -49,6 +50,7 @@ function Navbar() {
           <Link to="/about">About</Link>
           <Link to="/list">Adopt Pets</Link>
           <Link to="/profile">Profile</Link>
+          <Link to="/booked">Booked Pets</Link>
           {!currentUser && (
             <>
              <Link to="/login">Sign in</Link>

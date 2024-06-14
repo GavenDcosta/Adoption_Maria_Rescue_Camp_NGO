@@ -23,6 +23,13 @@ export const profilePageLoader = async () => {
 }
 
 
+export const bookedPageLoader = async () => {
+    const postPromise = apiRequest("/posts/bookedposts")
+    return defer({
+        postResponse: postPromise,
+    })
+}
+
 // export const listPageLoader = async ({ request, params }) => {
 //     const query = request.url.split("?")[1]
 

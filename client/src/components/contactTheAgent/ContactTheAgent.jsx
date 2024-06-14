@@ -17,17 +17,17 @@ const ContactTheAgent = () => {
                 <p>Instagram</p>
               </div>
           </Link>
+          <Link to="mailto:rescuestreets123@gmail.com" target='_blank'>
+              <div className="item">
+                <img src="/email.png" alt="" />
+                <p>Email</p>
+              </div>    
+          </Link>
           {/* <Link to="https://www.facebook.com/gaven.dcosta/" target='_blank'>
               <div className="item">
                 <img src="/facebook.png" alt="" />
                 <p>Facebook</p>
               </div>
-          </Link>
-          <Link to="mailto:gavendcosta@gmail.com" target='_blank'>
-              <div className="item">
-                <img src="/email.png" alt="" />
-                <p>Email</p>
-              </div>    
           </Link>
           <Link to="https://wa.me/919768333418" target='_blank'>
               <div className="item">

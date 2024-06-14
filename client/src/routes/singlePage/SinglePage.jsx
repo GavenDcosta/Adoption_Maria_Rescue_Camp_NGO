@@ -18,9 +18,6 @@ function SinglePage() {
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  console.log(post)
-
-
   const handleSave = async () => {
     if (!currentUser) {
       navigate("/login");
@@ -62,6 +59,7 @@ function SinglePage() {
 
     try {
       await apiRequest.post("/users/book", { postId: post.id });
+      alert("Booked Successfully. You can contact the admin for futher process or can wait for the admin to respond to you via email")
     } catch (err) {
       console.log(err);
       setBooked((prev) => !prev);

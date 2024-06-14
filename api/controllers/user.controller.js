@@ -136,6 +136,7 @@ export const bookPost = async (req, res) => {
     const tokenUserId = req.userId;
 
     try {
+        // Check if the post is already booked by the user
         const bookedPost = await prisma.bookedPosts.findUnique({
             where: {
                 userId_postId: {
@@ -146,6 +147,7 @@ export const bookPost = async (req, res) => {
         });
 
         if (bookedPost) {
+            // Delete the existing booking
             await prisma.bookedPosts.delete({
                 where: {
                     id: bookedPost.id,
@@ -159,6 +161,7 @@ export const bookPost = async (req, res) => {
 
             res.status(200).json({ message: "Post removed from saved list!" });
         } else {
+            // Create a new booking
             await prisma.bookedPosts.create({
                 data: {
                     userId: tokenUserId,
@@ -178,6 +181,7 @@ export const bookPost = async (req, res) => {
         res.status(500).json({ message: "Failed to process booking" });
     }
 };
+
 
 export const profilePosts = async (req, res) => {
     const tokenUserId = req.userId

@@ -63,54 +63,59 @@ const ProfilePage = () => {
                  </div>
 
                
-                 <div className="title">
-                    <h1>Saved List</h1>
-                 </div>
-                 <Suspense fallback={<p>Loading...</p>}>
-                    <Await
-                      resolve={data.postResponse}
-                      errorElement={
-                        <p>Error loading Posts!</p>
-                      }
-                    >
-                      {(postResponse) =>  <List isProfilePage posts={postResponse.data.savedPosts} />}
-                    </Await>
-                
-                 </Suspense>
+                 <div className="posts">
 
-                 <div className="title">
-                    <h1>Booked List</h1>
+                   <div className="title">
+                      <h1>Saved List</h1>
+                   </div>
+                   <Suspense fallback={<p>Loading...</p>}>
+                      <Await
+                        resolve={data.postResponse}
+                        errorElement={
+                          <p>Error loading Posts!</p>
+                        }
+                      >
+                        {(postResponse) =>  <List isProfilePage posts={postResponse.data.savedPosts} />}
+                      </Await>
+                  
+                   </Suspense>
+  
+                   <div className="title">
+                      <h1>Booked List</h1>
+                   </div>
+                   <Suspense fallback={<p>Loading...</p>}>
+                      <Await
+                        resolve={data.postResponse}
+                        errorElement={
+                          <p>Error loading Posts!</p>
+                        }
+                      >
+                        {(postResponse) =>  <List isProfilePage posts={postResponse.data.bookedPosts} />}
+                      </Await>
+                  
+                   </Suspense>
+                   
+                   {currentUser.username === "gaven" && currentUser.email === "gavendcosta@gmail.com" && (
+                        <>
+                           <div className="title">
+                              <h1>All Posts</h1>
+                           </div>
+                           <Suspense fallback={<p>Loading...</p>}>
+                              <Await
+                                resolve={data.postResponse}
+                                errorElement={
+                                  <p>Error loading Posts!</p>
+                                }
+                              >
+                                {(postResponse) =>   <List isProfilePage posts={postResponse.data.userPosts} />}
+                              </Await>
+                          
+                           </Suspense>
+                        </>
+                      )}
+
                  </div>
-                 <Suspense fallback={<p>Loading...</p>}>
-                    <Await
-                      resolve={data.postResponse}
-                      errorElement={
-                        <p>Error loading Posts!</p>
-                      }
-                    >
-                      {(postResponse) =>  <List isProfilePage posts={postResponse.data.bookedPosts} />}
-                    </Await>
-                
-                 </Suspense>
-                 
-                 {currentUser.username === "gaven" && currentUser.email === "gavendcosta@gmail.com" && (
-                      <>
-                         <div className="title">
-                            <h1>All Posts</h1>
-                         </div>
-                         <Suspense fallback={<p>Loading...</p>}>
-                            <Await
-                              resolve={data.postResponse}
-                              errorElement={
-                                <p>Error loading Posts!</p>
-                              }
-                            >
-                              {(postResponse) =>   <List isProfilePage posts={postResponse.data.userPosts} />}
-                            </Await>
-                        
-                         </Suspense>
-                      </>
-                    )}
+
             </div>
         </div>
         <div className="chatContainer">

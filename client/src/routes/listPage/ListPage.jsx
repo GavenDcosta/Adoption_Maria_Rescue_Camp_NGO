@@ -6,13 +6,13 @@ import { useLoaderData } from 'react-router-dom'
 import { Await } from 'react-router-dom'
 import Donation from '../../components/donation/Donation'
 
-
+ 
 const ListPage = () => { 
 
 const data = useLoaderData()
 
   return (
-    <div className='listPage'>
+     <div className='listPage'>
          <div className="listContainer">
               <div className="wrapper">
                  <Filter />

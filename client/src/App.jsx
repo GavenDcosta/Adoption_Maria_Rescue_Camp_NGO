@@ -11,8 +11,9 @@ import Login from "./routes/loginPage/LoginPage"
 import Register from "./routes/registerPage/register"
 import ProfileUpdatePage from "./routes/profileUpdatePage/profileUpdatePage";
 import NewPostPage from "./routes/newPostPage/newPostPage"
-import { listPageLoader, singlePageLoader, profilePageLoader } from "./lib/loaders";
+import { listPageLoader, singlePageLoader, profilePageLoader, bookedPageLoader } from "./lib/loaders";
 import AboutPage from "./routes/aboutPage/AboutPage";
+import BookedPage from "./routes/bookedPage/BookedPage";
 
 function App() {
 
@@ -46,7 +47,7 @@ function App() {
         {
           path:"/register",
           element:<Register/>
-        }
+        },
       ]
     },
     {
@@ -65,6 +66,11 @@ function App() {
         {
           path:"/add",
           element: <NewPostPage />,
+        },
+        {
+          path:"/booked",
+          element: <BookedPage />,
+          loader: bookedPageLoader,
         },
       ]
     }

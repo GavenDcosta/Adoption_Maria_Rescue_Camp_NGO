@@ -186,3 +186,26 @@ export const deletePost = async (req, res) => {
   }
 }
 
+
+export const getAllBookedPosts = async (req, res) => {
+  try{
+    const bookedPosts = await prisma.bookedPosts.findMany({
+      include: {
+        post: true,
+        user: {
+          select: {
+            username: true,
+            avatar: true,
+            email: true,
+          },
+        },
+      },
+    });
+
+    res.status(200).json(bookedPosts)
+ 
+ }catch(error){
+  console.log(error)
+  res.status(500).json({message: "Failed to get the booked posts!"})
+ }  
+}
