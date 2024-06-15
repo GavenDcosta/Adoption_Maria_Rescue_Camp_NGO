@@ -10,7 +10,7 @@ import prisma from "./lib/prisma.js"
 const app = express()
 
 const corsOptions = {
-    origin: "http://localhost:5173",
+    origin: "https://adoption-maria-rescue-camp.vercel.app",
     credentials: true,
   };
   
