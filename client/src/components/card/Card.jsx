@@ -91,7 +91,7 @@ const Card = ({item, isProfile}) => {
                       </>
                )}
 
-              <Link target='_blank' to="https://www.instagram.com/direct/t/17845898502157209/">
+              <Link target='_blank' to="mailto:rescuestreets123@gmail.com">
                   <div className="icon">
                       <img src="/chat.png" alt="" />
                   </div>
