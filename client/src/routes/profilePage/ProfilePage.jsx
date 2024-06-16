@@ -53,7 +53,7 @@ const ProfilePage = () => {
 
                  <div className="title">         
                    {(currentUser.username === "gaven" && currentUser.email === "gavendcosta@gmail.com") || 
-                    (currentUser.username === "Maria_mission_paws_rescue" && currentUser.email === "rescuestreets123@gmail.com") && (
+                    (currentUser.username === "Maria_mission_paws" && currentUser.email === "rescuestreets123@gmail.com") && (
                      <>
                        <h1>Welcome Admin</h1>                       
                        <Link to="/add">
@@ -98,7 +98,7 @@ const ProfilePage = () => {
                    </Suspense>
                    
                    {(currentUser.username === "gaven" && currentUser.email === "gavendcosta@gmail.com") || 
-                    (currentUser.username === "Maria_mission_paws_rescue" && currentUser.email === "rescuestreets123@gmail.com") && (
+                    (currentUser.username === "Maria_mission_paws" && currentUser.email === "rescuestreets123@gmail.com") && (
                      <>
                        <div className="title">
                          <h1>All Posts</h1>

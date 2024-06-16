@@ -85,7 +85,7 @@ const Card = ({item, isProfile}) => {
 
               {(currentUser && 
                 ((currentUser.username === "gaven" && currentUser.email === "gavendcosta@gmail.com") || 
-                 (currentUser.username === "Maria_mission_paws_rescue" && currentUser.email === "rescuestreets123@gmail.com"))
+                 (currentUser.username === "Maria_mission_paws" && currentUser.email === "rescuestreets123@gmail.com"))
               ) && (
                 <>
                   <div className="icon" onClick={handleDelete}>
