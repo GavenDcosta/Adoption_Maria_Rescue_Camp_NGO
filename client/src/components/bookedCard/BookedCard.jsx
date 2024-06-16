@@ -41,8 +41,9 @@ const BookedCard = ({post, user, createdAt}) => {
                        <div className="userdetails">
                          <p>username: {" "} {user.username}</p>
 
-                         {currentUser.username === "gaven" && currentUser.email === "gavendcosta@gmail.com" && (
-                            <Link
+                         {(currentUser.username === "gaven" && currentUser.email === "gavendcosta@gmail.com") || 
+                          (currentUser.username === "Maria" && currentUser.email === "rescuestreets123@gmail.com") && (
+                           <Link
                              style={{
                                textDecoration: "underline",
                                color: "blue",

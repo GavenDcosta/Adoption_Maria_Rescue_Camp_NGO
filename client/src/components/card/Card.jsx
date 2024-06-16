@@ -83,13 +83,16 @@ const Card = ({item, isProfile}) => {
                 )
               }
 
-              {currentUser && currentUser.username === "gaven" && currentUser.email === "gavendcosta@gmail.com" && (
-                      <>
-                         <div className="icon" onClick={handleDelete}>
-                           <img src="/delete.png" alt="" />
-                         </div>
-                      </>
-               )}
+              {(currentUser && 
+                ((currentUser.username === "gaven" && currentUser.email === "gavendcosta@gmail.com") || 
+                 (currentUser.username === "Maria" && currentUser.email === "rescuestreets123@gmail.com"))
+              ) && (
+                <>
+                  <div className="icon" onClick={handleDelete}>
+                    <img src="/delete.png" alt="" />
+                  </div>
+                </>
+              )}
 
               <Link target='_blank' to="mailto:rescuestreets123@gmail.com">
                   <div className="icon">

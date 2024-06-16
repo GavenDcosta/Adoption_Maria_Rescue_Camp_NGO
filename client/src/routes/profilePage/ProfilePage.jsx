@@ -52,15 +52,17 @@ const ProfilePage = () => {
 
 
                  <div className="title">         
-                    {currentUser.username === "gaven" && currentUser.email === "gavendcosta@gmail.com" && (
-                       <>
-                          <h1>Welcome Admin</h1>                       
-                          <Link to="/add">
-                            <button>Create New Post</button>
-                          </Link>
-                       </>
-                    )}
+                   {(currentUser.username === "gaven" && currentUser.email === "gavendcosta@gmail.com") || 
+                    (currentUser.username === "Maria" && currentUser.email === "rescuestreets123@gmail.com") && (
+                     <>
+                       <h1>Welcome Admin</h1>                       
+                       <Link to="/add">
+                         <button>Create New Post</button>
+                       </Link>
+                     </>
+                   )}
                  </div>
+
 
                
                  <div className="posts">
@@ -95,24 +97,25 @@ const ProfilePage = () => {
                   
                    </Suspense>
                    
-                   {currentUser.username === "gaven" && currentUser.email === "gavendcosta@gmail.com" && (
-                        <>
-                           <div className="title">
-                              <h1>All Posts</h1>
-                           </div>
-                           <Suspense fallback={<p>Loading...</p>}>
-                              <Await
-                                resolve={data.postResponse}
-                                errorElement={
-                                  <p>Error loading Posts!</p>
-                                }
-                              >
-                                {(postResponse) =>   <List isProfilePage posts={postResponse.data.userPosts} />}
-                              </Await>
-                          
-                           </Suspense>
-                        </>
-                      )}
+                   {(currentUser.username === "gaven" && currentUser.email === "gavendcosta@gmail.com") || 
+                    (currentUser.username === "Maria" && currentUser.email === "rescuestreets123@gmail.com") && (
+                     <>
+                       <div className="title">
+                         <h1>All Posts</h1>
+                       </div>
+                       <Suspense fallback={<p>Loading...</p>}>
+                         <Await
+                           resolve={data.postResponse}
+                           errorElement={
+                             <p>Error loading Posts!</p>
+                           }
+                         >
+                           {(postResponse) => <List isProfilePage posts={postResponse.data.userPosts} />}
+                         </Await>
+                       </Suspense>
+                     </>
+                   )}
+
 
                  </div>
 
